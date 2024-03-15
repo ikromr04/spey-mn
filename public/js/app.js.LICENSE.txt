@@ -1,0 +1,21 @@
+//! Ajax request setup 
+
+//! Scroll window to top (button event)
+
+//! all-products section end */
+
+//! all-products section start */
+
+//! hide modals end
+
+//! hide modals start
+
+//! product-info section
+
+//! product-search section start */
+
+//! similar-products section start
+
+//! vitrin dropdown end
+
+//! vitrin dropdown start
