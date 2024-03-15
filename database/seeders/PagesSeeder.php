@@ -1,5 +1,5 @@
 <?php
-  
+
 namespace Database\Seeders;
 
 use App\Models\Page;
@@ -15,50 +15,30 @@ class PagesSeeder extends Seeder
   public function run()
   {
     $pages = array(
+      array('id' => '1', 'en_title' => 'Home', 'ru_title' => 'Главная', 'route' => 'home', 'created_at' => '2022-02-11 18:29:56', 'updated_at' => '2022-02-11 18:29:56'),
+      array('id' => '2', 'en_title' => 'About Us', 'ru_title' => 'О нас', 'route' => 'about', 'created_at' => '2022-02-11 18:29:56', 'updated_at' => '2022-02-11 18:29:56'),
+      array('id' => '3', 'en_title' => 'Products', 'ru_title' => 'Продукты', 'route' => 'products', 'created_at' => '2022-02-11 18:29:56', 'updated_at' => '2022-02-11 18:29:56'),
+      array('id' => '4', 'en_title' => 'Industry News', 'ru_title' => 'Новости отрасли', 'route' => 'news', 'created_at' => '2022-02-11 18:29:56', 'updated_at' => '2022-02-11 18:29:56'),
+      array('id' => '5', 'en_title' => 'Pharmacovigilance', 'ru_title' => 'Фармаконадзор', 'route' => 'contacts', 'created_at' => '2022-02-11 18:29:56', 'updated_at' => '2022-02-11 18:29:56'),
       array(
-        'id' => 1,
-        'en_title' => 'Home',
-        'ru_title' => 'Главная',
-        'route' => 'home',
-      ),
-      array(
-        'id' => 2,
-        'en_title' => 'About Us',
-        'ru_title' => 'О нас',
-        'route' => 'about',
-      ),
-      array(
-        'id' => 3,
-        'en_title' => 'Products',
-        'ru_title' => 'Продукты',
-        'route' => 'products',
-      ),
-      array(
-        'id' => 4,
-        'en_title' => 'Industry News',
-        'ru_title' => 'Новости отрасли',
-        'route' => 'news',
-      ),
-      array(
-        'id' => 5,
-        'en_title' => 'Pharmacovigilance',
-        'ru_title' => 'Фармаконадзор',
-        'route' => 'contacts',
-      ),
-      array(
-        'id' => 6,
+        'id' => '6',
         'en_title' => 'Contacts',
         'ru_title' => 'Контакты',
         'route' => 'contacts',
-      ),
+        'created_at' => '2022-02-11 18:29:56',
+        'updated_at' => '2022-02-11 18:29:56'
+      )
     );
 
     foreach ($pages as $page) {
-      $table = new Page;
-      $table->en_title = $page['en_title'];
-      $table->ru_title = $page['ru_title'];
-      $table->route = $page['route'];
-      $table->save();
+      Page::create([
+        'id' => $page['id'],
+        'en_title' => $page['en_title'],
+        'ru_title' => $page['ru_title'],
+        'route' => $page['route'],
+        'created_at' => $page['created_at'],
+        'updated_at' => $page['updated_at'],
+      ]);
     }
   }
 }
