@@ -128,6 +128,9 @@
                 @if ($locale == 'en')
                     Eng
                 @endif
+                @if ($locale == 'mn')
+                    Mon
+                @endif
                 <svg data-family="langs-dropdown" class="langs-dropdown__icon" xmlns="http://www.w3.org/2000/svg"
                     width="14.526" height="8" viewBox="0 0 14.526 8">
                     <g data-family="langs-dropdown" transform="translate(0 -54.091)">
@@ -139,16 +142,24 @@
             </button>
             <div class="langs-dropdown__content" data-family="langs-dropdown">
                 <ul class="langs-dropdown__list" data-family="langs-dropdown">
-                    <li class="langs-dropdown__item" data-family="langs-dropdown">
-                        @if ($locale == 'ru')
-                            <a class="langs-dropdown__link" data-family="langs-dropdown"
-                                href="{{ route('localization') }}?locale=en">Eng</a>
-                        @endif
-                        @if ($locale == 'en')
+                    @if ($locale != 'ru')
+                        <li class="langs-dropdown__item" data-family="langs-dropdown">
                             <a class="langs-dropdown__link" data-family="langs-dropdown"
                                 href="{{ route('localization') }}?locale=ru">Rus</a>
-                        @endif
-                    </li>
+                        </li>
+                    @endif
+                    @if ($locale != 'en')
+                        <li class="langs-dropdown__item" data-family="langs-dropdown">
+                            <a class="langs-dropdown__link" data-family="langs-dropdown"
+                                href="{{ route('localization') }}?locale=en">Eng</a>
+                        </li>
+                    @endif
+                    @if ($locale != 'mn')
+                        <li class="langs-dropdown__item" data-family="langs-dropdown">
+                            <a class="langs-dropdown__link" data-family="langs-dropdown"
+                                href="{{ route('localization') }}?locale=mn">Mon</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
