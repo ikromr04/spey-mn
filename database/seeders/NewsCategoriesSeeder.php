@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\NewsCategory;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class NewsCategoriesSeeder extends Seeder
 {
@@ -30,11 +31,15 @@ class NewsCategoriesSeeder extends Seeder
       )
     );
 
+    $lang = new GoogleTranslate('en');
+    $lang->setSource('en')->setTarget('mn');
+
     foreach ($categories as $category) {
       NewsCategory::create([
         'id' => $category['id'],
         'en_title' => $category['en_title'],
         'ru_title' => $category['ru_title'],
+        'mn_title' => $lang->translate($category['en_title']),
         'view_rate' => $category['view_rate'],
         'trashed' => $category['trashed'],
         'created_at' => $category['created_at'],

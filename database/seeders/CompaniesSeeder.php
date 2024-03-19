@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Company;
 use Illuminate\Database\Seeder;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class CompaniesSeeder extends Seeder
 {
@@ -32,14 +33,19 @@ class CompaniesSeeder extends Seeder
       )
     );
 
+    $lang = new GoogleTranslate('en');
+    $lang->setSource('en')->setTarget('mn');
+
     foreach ($companies as $company) {
       Company::create([
         'id' => $company['id'],
         'quantity' => $company['quantity'],
         'en_title' => $company['en_title'],
         'ru_title' => $company['ru_title'],
+        'mn_title' => $lang->translate($company['en_title']),
         'en_text' => $company['en_text'],
         'ru_text' => $company['ru_text'],
+        'mn_text' => $lang->translate($company['en_text']),
         'trashed' => $company['trashed'],
         'created_at' => $company['created_at'],
         'updated_at' => $company['updated_at'],

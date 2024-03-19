@@ -20,6 +20,7 @@ class CreateTextsTable extends Migration
       $table->string('anchor');
       $table->text('en_text');
       $table->text('ru_text');
+      $table->text('mn_text');
       $table->timestamps();
     });
   }

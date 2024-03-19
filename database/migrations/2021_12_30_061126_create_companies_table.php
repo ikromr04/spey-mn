@@ -18,8 +18,10 @@ class CreateCompaniesTable extends Migration
       $table->string('quantity');
       $table->string('en_title');
       $table->string('ru_title');
+      $table->string('mn_title');
       $table->text('en_text');
       $table->text('ru_text');
+      $table->text('mn_text');
       $table->boolean('trashed')->default(false);
       $table->timestamps();
     });

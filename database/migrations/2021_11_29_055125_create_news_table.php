@@ -19,9 +19,11 @@ class CreateNewsTable extends Migration
       $table->integer('category_id');
       $table->string('en_title');
       $table->string('ru_title');
+      $table->string('mn_title');
       $table->string('slug')->unique();
       $table->text('ru_text')->nullable();
       $table->text('en_text')->nullable();
+      $table->text('mn_text')->nullable();
       $table->bigInteger('view_rate')->default(0);
       $table->boolean('trashed')->default(false);
       $table->timestamps();

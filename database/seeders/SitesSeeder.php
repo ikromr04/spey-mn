@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Site;
 use Illuminate\Database\Seeder;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class SitesSeeder extends Seeder
 {
@@ -62,16 +63,22 @@ class SitesSeeder extends Seeder
       ),
     );
 
+    $lang = new GoogleTranslate('en');
+    $lang->setSource('en')->setTarget('mn');
+
     foreach ($sites as $site) {
       Site::create([
         'id' => $site['id'],
         'en_title' => $site['en_title'],
         'ru_title' => $site['ru_title'],
+        'mn_title' => $lang->translate($site['en_title']),
         'en_location' => $site['en_location'],
         'ru_location' => $site['ru_location'],
+        'mn_location' => $lang->translate($site['en_location']),
         'map' => $site['map'],
         'en_address' => $site['en_address'],
         'ru_address' => $site['ru_address'],
+        'mn_address' => $lang->translate($site['en_address']) || '',
         'email' => $site['email'],
         'link' => $site['link'],
         'trashed' => $site['trashed'],

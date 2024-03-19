@@ -6,6 +6,7 @@ use App\Models\News;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class NewsSeeder extends Seeder
 {
@@ -44,6 +45,9 @@ class NewsSeeder extends Seeder
       )
     );
 
+    $lang = new GoogleTranslate('en');
+    $lang->setSource('en')->setTarget('mn');
+
     foreach ($news as $table) {
       News::create([
         'id' => $table['id'],
@@ -51,9 +55,11 @@ class NewsSeeder extends Seeder
         'category_id' => $table['category_id'],
         'en_title' => $table['en_title'],
         'ru_title' => $table['ru_title'],
+        'mn_title' => $lang->translate($table['en_title']),
         'slug' => $table['slug'],
         'ru_text' => $table['ru_text'],
         'en_text' => $table['en_text'],
+        'mn_text' => $lang->translate($table['en_text']),
         'view_rate' => $table['view_rate'],
         'trashed' => $table['trashed'],
         'created_at' => $table['created_at'],

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Page;
 use Illuminate\Database\Seeder;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class PagesSeeder extends Seeder
 {
@@ -30,11 +31,15 @@ class PagesSeeder extends Seeder
       )
     );
 
+    $lang = new GoogleTranslate('en');
+    $lang->setSource('en')->setTarget('mn');
+
     foreach ($pages as $page) {
       Page::create([
         'id' => $page['id'],
         'en_title' => $page['en_title'],
         'ru_title' => $page['ru_title'],
+        'mn_title' => $lang->translate($page['en_title']),
         'route' => $page['route'],
         'created_at' => $page['created_at'],
         'updated_at' => $page['updated_at'],

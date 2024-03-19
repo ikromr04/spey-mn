@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Value;
 use Illuminate\Database\Seeder;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class ValuesSeeder extends Seeder
 {
@@ -32,13 +33,18 @@ class ValuesSeeder extends Seeder
       )
     );
 
+    $lang = new GoogleTranslate('en');
+    $lang->setSource('en')->setTarget('mn');
+
     foreach ($values as $value) {
       Value::create([
         'id' => $value['id'],
         'en_title' => $value['en_title'],
         'ru_title' => $value['ru_title'],
+        'mn_title' => $lang->translate($value['en_title']),
         'en_text' => $value['en_text'],
         'ru_text' => $value['ru_text'],
+        'mn_text' => $lang->translate($value['en_text']),
         'trashed' => $value['trashed'],
         'created_at' => $value['created_at'],
         'updated_at' => $value['updated_at'],

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Text;
 use Illuminate\Database\Seeder;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class TextsSeeder extends Seeder
 {
@@ -61,6 +62,9 @@ class TextsSeeder extends Seeder
       )
     );
 
+    $lang = new GoogleTranslate('en');
+    $lang->setSource('en')->setTarget('mn');
+
     foreach ($texts as $text) {
       Text::create([
         'id' => $text['id'],
@@ -69,6 +73,7 @@ class TextsSeeder extends Seeder
         'anchor' => $text['anchor'],
         'en_text' => $text['en_text'],
         'ru_text' => $text['ru_text'],
+        'mn_text' => $lang->translate($text['en_text']),
         'created_at' => $text['created_at'],
         'updated_at' => $text['updated_at'],
       ]);

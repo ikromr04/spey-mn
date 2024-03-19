@@ -6,32 +6,34 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateHistoriesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('histories', function (Blueprint $table) {
-            $table->id();
-            $table->string('en_title');
-            $table->string('ru_title');
-            $table->text('en_text');
-            $table->text('ru_text');
-            $table->integer('year');
-            $table->boolean('trashed')->default(false);
-            $table->timestamps();
-        });
-    }
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up()
+  {
+    Schema::create('histories', function (Blueprint $table) {
+      $table->id();
+      $table->string('en_title');
+      $table->string('ru_title');
+      $table->string('mn_title');
+      $table->text('en_text');
+      $table->text('ru_text');
+      $table->text('mn_text');
+      $table->integer('year');
+      $table->boolean('trashed')->default(false);
+      $table->timestamps();
+    });
+  }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('histories');
-    }
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down()
+  {
+    Schema::dropIfExists('histories');
+  }
 }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\History;
 use Illuminate\Database\Seeder;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class HistoriesSeeder extends Seeder
 {
@@ -39,13 +40,18 @@ class HistoriesSeeder extends Seeder
       )
     );
 
+    $lang = new GoogleTranslate('en');
+    $lang->setSource('en')->setTarget('mn');
+
     foreach ($histories as $history) {
       History::create([
         'id' => $history['id'],
         'en_title' => $history['en_title'],
         'ru_title' => $history['ru_title'],
+        'mn_title' => $lang->translate($history['en_title']),
         'en_text' => $history['en_text'],
         'ru_text' => $history['ru_text'],
+        'mn_text' => $lang->translate($history['en_text']),
         'year' => $history['year'],
         'trashed' => $history['trashed'],
         'created_at' => $history['created_at'],

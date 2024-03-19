@@ -6,6 +6,7 @@ use App\Models\Product;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class ProductsSeeder extends Seeder
 {
@@ -130,6 +131,10 @@ class ProductsSeeder extends Seeder
         'updated_at' => '2024-03-14 20:33:41'
       )
     );
+
+    $lang = new GoogleTranslate('en');
+    $lang->setSource('en')->setTarget('mn');
+
     foreach ($products as $product) {
       Product::create([
         'id' => $product['id'],
@@ -138,17 +143,23 @@ class ProductsSeeder extends Seeder
         'category_id' => $product['category_id'],
         'en_title' => $product['en_title'],
         'ru_title' => $product['ru_title'],
+        'mn_title' => $lang->translate($product['en_title']),
         'slug' => $product['slug'],
         'en_instruction' => $product['en_instruction'],
         'ru_instruction' => $product['ru_instruction'],
+        'mn_instruction' => $product['en_instruction'] ? $lang->translate($product['en_instruction']) : $product['en_instruction'],
         'en_composition' => $product['en_composition'],
         'ru_composition' => $product['ru_composition'],
+        'mn_composition' => $product['en_composition'] ? $lang->translate($product['en_composition']) : $product['en_composition'],
         'en_indications' => $product['en_indications'],
         'ru_indications' => $product['ru_indications'],
+        'mn_indications' => $product['en_indications'] ? $lang->translate($product['en_indications']) : $product['en_indications'],
         'en_description' => $product['en_description'],
         'ru_description' => $product['ru_description'],
+        'mn_description' => $product['en_description'] ? $lang->translate($product['en_description']) : $product['en_description'],
         'en_method' => $product['en_method'],
         'ru_method' => $product['ru_method'],
+        'mn_method' => $product['en_method'] ? $lang->translate($product['en_method']) : $product['en_method'],
         'recipe' => $product['recipe'],
         'view_rate' => $product['view_rate'],
         'trashed' => $product['trashed'],

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\ProductsCategory;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class ProductsCategoriesSeeder extends Seeder
 {
@@ -64,11 +65,15 @@ class ProductsCategoriesSeeder extends Seeder
       )
     );
 
+    $lang = new GoogleTranslate('en');
+    $lang->setSource('en')->setTarget('mn');
+
     foreach ($categories as $category) {
       ProductsCategory::create([
         'id' => $category['id'],
         'en_title' => $category['en_title'],
         'ru_title' => $category['ru_title'],
+        'mn_title' => $lang->translate($category['en_title']),
         'view_rate' => $category['view_rate'],
         'icon' => $category['icon'],
         'trashed' => $category['trashed'],
