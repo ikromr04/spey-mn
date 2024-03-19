@@ -161,9 +161,14 @@ if (productsUpdate) {
   var enInstructionPreviewEl = document.querySelector('[data-instruction="en"]');
   var enInstructionDeleteEl = document.querySelector('button[data-action="delete-en-instruction"]');
   var enInstructionDeletedEl = document.querySelector('input[name="en-instruction-deleted"]');
+  var mnInstructionChooserEl = document.querySelector('input[name="mn-instruction"]');
+  var mnInstructionPreviewEl = document.querySelector('[data-instruction="mn"]');
+  var mnInstructionDeleteEl = document.querySelector('button[data-action="delete-mn-instruction"]');
+  var mnInstructionDeletedEl = document.querySelector('input[name="mn-instruction-deleted"]');
   window.setPhotoPreview(photoChooserEl, photoPreviewEl);
   window.setFilePreview(ruInstructionChooserEl, ruInstructionPreviewEl);
   window.setFilePreview(enInstructionChooserEl, enInstructionPreviewEl);
+  window.setFilePreview(mnInstructionChooserEl, mnInstructionPreviewEl);
   ruInstructionDeleteEl.addEventListener('click', function () {
     ruInstructionPreviewEl.textContent = 'Файл не выбран';
     ruInstructionDeletedEl.checked = true;
@@ -171,6 +176,10 @@ if (productsUpdate) {
   enInstructionDeleteEl.addEventListener('click', function () {
     enInstructionPreviewEl.textContent = 'Файл не выбран';
     enInstructionDeletedEl.checked = true;
+  });
+  mnInstructionDeleteEl.addEventListener('click', function () {
+    mnInstructionPreviewEl.textContent = 'Файл не выбран';
+    mnInstructionDeletedEl.checked = true;
   });
 }
 })();
@@ -191,6 +200,7 @@ if (productsCategories) {
     updateInput = updateModal.querySelector('[name="id"]'),
     ruTitleInput = updateModal.querySelector('[name="ru-title"]'),
     enTitleInput = updateModal.querySelector('[name="en-title"]'),
+    mnTitleInput = updateModal.querySelector('[name="mn-title"]'),
     confirmInput = confirmModal.querySelector('[name="id"]');
   //* confirm-modal start
   deleteBtns.forEach(function (button) {
@@ -223,6 +233,7 @@ if (productsCategories) {
       updateInput.value = button.dataset.id;
       ruTitleInput.value = button.dataset.ru;
       enTitleInput.value = button.dataset.en;
+      mnTitleInput.value = button.dataset.mn;
     };
   });
   updateModal.addEventListener('click', function (e) {

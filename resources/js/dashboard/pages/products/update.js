@@ -39,10 +39,15 @@ if (productsUpdate) {
   const enInstructionPreviewEl = document.querySelector('[data-instruction="en"]');
   const enInstructionDeleteEl = document.querySelector('button[data-action="delete-en-instruction"]');
   const enInstructionDeletedEl = document.querySelector('input[name="en-instruction-deleted"]');
+  const mnInstructionChooserEl = document.querySelector('input[name="mn-instruction"]');
+  const mnInstructionPreviewEl = document.querySelector('[data-instruction="mn"]');
+  const mnInstructionDeleteEl = document.querySelector('button[data-action="delete-mn-instruction"]');
+  const mnInstructionDeletedEl = document.querySelector('input[name="mn-instruction-deleted"]');
 
   window.setPhotoPreview(photoChooserEl, photoPreviewEl);
   window.setFilePreview(ruInstructionChooserEl, ruInstructionPreviewEl);
   window.setFilePreview(enInstructionChooserEl, enInstructionPreviewEl);
+  window.setFilePreview(mnInstructionChooserEl, mnInstructionPreviewEl);
 
   ruInstructionDeleteEl.addEventListener('click', () => {
     ruInstructionPreviewEl.textContent = 'Файл не выбран';
@@ -52,5 +57,10 @@ if (productsUpdate) {
   enInstructionDeleteEl.addEventListener('click', () => {
     enInstructionPreviewEl.textContent = 'Файл не выбран';
     enInstructionDeletedEl.checked = true;
+  });
+
+  mnInstructionDeleteEl.addEventListener('click', () => {
+    mnInstructionPreviewEl.textContent = 'Файл не выбран';
+    mnInstructionDeletedEl.checked = true;
   });
 }
