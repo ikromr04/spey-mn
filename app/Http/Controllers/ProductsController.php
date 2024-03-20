@@ -187,6 +187,7 @@ class ProductsController extends Controller
     $product->recipe = request('prescription');
     $product->ru_title = request('ru-title');
     $product->en_title = request('en-title');
+    $product->mn_title = request('mn-title');
 
     if ($request->hasFile('ru-instruction')) {
       $path = public_path('files/' . $product->ru_instruction);
