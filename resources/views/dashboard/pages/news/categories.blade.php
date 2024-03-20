@@ -38,7 +38,7 @@
                 @foreach ($categories as $category)
                     <li class="list-item">
                         <span class="list-item-title">{{$rank++}}. {{$category->$title}}</span>
-                        <button class="list-action" type="button" data-action="update-category" data-id="{{$category->id}}" data-ru="{{$category->ru_title}}" data-en="{{$category->en_title}}">
+                        <button class="list-action" type="button" data-action="update-category" data-id="{{$category->id}}" data-ru="{{$category->ru_title}}" data-en="{{$category->en_title}}" data-mn="{{$category->mn_title}}">
                             <svg fill="#fff" width="25" height="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 217.855 217.855">
                                 <path d="M215.658 53.55L164.305 2.196a7.5 7.5 0 00-10.606 0L3.809 152.086a7.505 7.505 0 00-2.193 5.075L.005 210.127a7.502 7.502 0 007.725 7.724l52.964-1.613a7.502 7.502 0 005.075-2.192l149.89-149.889a7.501 7.501 0 00-.001-10.607zM57.264 201.336l-42.024 1.28 1.279-42.026 91.124-91.125 40.75 40.743-91.129 91.128zM159 99.602L118.249 58.86l40.752-40.753 40.746 40.747L159 99.602z"/>
                             </svg>
@@ -53,7 +53,7 @@
             </ul>
             {{$categories->links('components/pagination')}}
         @else
-            <p>Категорий не найдено</p>  
+            <p>Категорий не найдено</p>
         @endif
         <div class="confirm-modal hidden">
             <form class="confirm-form" action="{{route('news.categories.delete')}}" method="post">
@@ -75,6 +75,9 @@
                 <label class="confirm-label">Название категории на английском
                     <input class="form-input" type="text" name="en-title" required autocomplete="off">
                 </label>
+                <label class="confirm-label">Название категории на монгольском
+                    <input class="form-input" type="text" name="mn-title" required autocomplete="off">
+                </label>
                 <div class="form-btn-wrap">
                     <button class="form-btn green-bg" type="submit">Добавить</button>
                     <button class="form-btn red-bg" type="reset" data-action="cancel">Отмена</button>
@@ -90,6 +93,9 @@
                 </label>
                 <label class="confirm-label">Название категории на английском
                     <input class="form-input" type="text" name="en-title" value="" required>
+                </label>
+                <label class="confirm-label">Название категории на монгольском
+                    <input class="form-input" type="text" name="mn-title" value="" required>
                 </label>
                 <div class="form-btn-wrap">
                     <button class="form-btn green-bg" type="submit">Редактировать</button>

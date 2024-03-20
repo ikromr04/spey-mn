@@ -30,9 +30,11 @@ class NewsController extends Controller
       'category_id' => request('category-id'),
       'ru_title' => request('ru-title'),
       'en_title' => request('en-title'),
+      'mn_title' => request('mn-title'),
       'slug' => SlugService::createSlug(News::class, 'slug', request('ru-title')),
       'ru_text' => request('ru-text'),
       'en_text' => request('en-text'),
+      'mn_text' => request('mn-text'),
     ]);
 
     if ($news) {
@@ -48,6 +50,7 @@ class NewsController extends Controller
       'category-id' => 'required',
       'ru-title' => 'required',
       'en-title' => 'required',
+      'mn-title' => 'required',
     ]);
 
     $news = News::find(request('news-id'));
@@ -66,8 +69,10 @@ class NewsController extends Controller
     $news->category_id = request('category-id');
     $news->en_title = request('en-title');
     $news->ru_title = request('ru-title');
+    $news->mn_title = request('mn-title');
     $news->en_text = request('en-text');
     $news->ru_text = request('ru-text');
+    $news->mn_text = request('mn-text');
     $update = $news->update();
 
     if ($update) {
@@ -113,6 +118,7 @@ class NewsController extends Controller
     $category = new NewsCategory;
     $category->ru_title = $request->input('ru-title');
     $category->en_title = $request->input('en-title');
+    $category->mn_title = $request->input('mn-title');
     $save = $category->save();
 
     if ($save) {
@@ -127,6 +133,7 @@ class NewsController extends Controller
     $category = NewsCategory::find($request->id);
     $category->ru_title = $request->input('ru-title');
     $category->en_title = $request->input('en-title');
+    $category->mn_title = $request->input('mn-title');
     $save = $category->save();
 
     if ($save) {

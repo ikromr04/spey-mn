@@ -459,7 +459,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .form__select,
 .form__input {
-  width: 250px;
+  width: 100%;
   font-size: 16px;
   height: 40px;
   padding-left: 14px;

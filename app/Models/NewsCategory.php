@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class NewsCategory extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    public function news()
-    {
-        return $this->hasMany(News::class, 'category_id');
-    }
+  public function news()
+  {
+    return $this->hasMany(News::class, 'category_id');
+  }
 }

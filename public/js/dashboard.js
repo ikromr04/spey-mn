@@ -367,6 +367,7 @@ if (newsCategories) {
     updateInput = updateModal.querySelector('[name="id"]'),
     ruTitleInput = updateModal.querySelector('[name="ru-title"]'),
     enTitleInput = updateModal.querySelector('[name="en-title"]'),
+    mnTitleInput = updateModal.querySelector('[name="mn-title"]'),
     confirmInput = confirmModal.querySelector('[name="id"]');
   //* confirm-modal start
   deleteBtns.forEach(function (button) {
@@ -399,6 +400,7 @@ if (newsCategories) {
       updateInput.value = button.dataset.id;
       ruTitleInput.value = button.dataset.ru;
       enTitleInput.value = button.dataset.en;
+      mnTitleInput.value = button.dataset.mn;
     };
   });
   updateModal.addEventListener('click', function (e) {
