@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/localization', [MainController::class, 'setLocale'])->name('localization');
 // Pages' routes
 Route::get('/', [PagesController::class, 'index'])->name('home');
+Route::post('/ae', [PagesController::class, 'ae'])->name('ae');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/products', [PagesController::class, 'products'])->name('products');
 Route::get('/products/{slug}', [PagesController::class, 'productsRead'])->name('products.read');

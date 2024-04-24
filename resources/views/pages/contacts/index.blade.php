@@ -140,11 +140,24 @@
       <div class="container pharmacovigilanc__container">
         <div class="pharmacovigilanc-first">
           <h2 class="pharmacovigilanc__title">{!! $page['pharmacovigilance-title'] !!}</h2>
-          <div>{!! $page['pharmacovigilance-text'] !!}</div>
+          <p>@lang('To report Product Complaint/Adverse Event kindly use below mentioned contact information')</p>
+          <br>
+          <dl>
+            <dt>@lang('Contact Number'):</dt>
+            <dd style="margin-bottom: 16px">
+              <a style="color: #0096a5;" href="tel:+77771750099">+77771750099</a>
+              <strong style="color: rgb(242, 61, 48); font-weight: normal;">(@lang('for drug safety inquiries'))</strong>
+            </dd>
+            <dt>@lang('Contact Email')</dt>
+            <dd>
+              <a style="color: #0096a5;" href="mailto:drugsafety@evolet.co.uk">drugsafety@evolet.co.uk</a>
+              <strong style="color: rgb(242, 61, 48); font-weight: normal;">(@lang('for drug safety inquiries'))</strong>
+            </dd>
+          </dl>
         </div>
         <div class="pharmacovigilanc-form">
-          <h2 class="contact-us__title">{!! $page['contacts-form-title'] !!}</h2>
-          <form class="contact-form">
+          <h2 class="contact-us__title">@lang('Complaint form'):</h2>
+          <form class="contact-form" action="{{ route('ae') }}" method="post">
             <span class="contact-form__icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
                 <path d="M113.82,0h-7.056a1.764,1.764,0,0,0,0,3.528h7.056a1.764,1.764,0,1,0,0-3.528Z" transform="translate(-98.879)" fill="#fff" />
@@ -160,13 +173,27 @@
               </svg>
             </span>
             @csrf
-            <input class="contact-form__input" name="name" type="text" placeholder="{{ __('Name') }}">
-            <input class="contact-form__input contact-form__input--medicine" name="medicine" type="text" placeholder="{{ __('Name of Medicine') }}">
-            <input class="contact-form__input" name="email" type="email" placeholder="{{ __('Email') }}">
-            <input class="contact-form__input" name="phone" type="number" placeholder="{{ __('Phone') }}">
-            <textarea class="contact-form__textarea" name="message" placeholder="{{ __('Enter your Message here...') }}"></textarea>
-            <button class="button contact-form__submit-btn" type="submit">{{ __('Send') }}</button>
+            <input class="contact-form__input" name="inititals" type="text" placeholder="@lang('Patients Initial')" required>
+            <input class="contact-form__input" name="age" type="number" placeholder="@lang('Age (Years) (not required)')">
+            <input class="contact-form__input" name="weight" type="number" placeholder="@lang('Weight (Kgs) (not required)')">
+            <input class="contact-form__input" name="hight" type="number" placeholder="@lang('Height (Cms) (not required)')">
+            <input class="contact-form__input" name="event" type="text" placeholder="@lang('Adverse event')" required>
+            <input class="contact-form__input" name="suspect" type="text" placeholder="@lang('Suspect drugs')" required>
+            <input class="contact-form__input" name="name" type="text" placeholder="@lang('Name of the reporter')" required>
+            <input class="contact-form__input" name="email" type="email" placeholder="@lang('Email ID of the reporter')" required>
+            <input class="contact-form__input" name="phone" type="tel" placeholder="@lang('Telephone/Cell number of the reporter')" required>
+
+            <button class="button contact-form__submit-btn" type="submit">@lang('Submit')</button>
           </form>
+          <br>
+          <br>
+          <p>@lang('Click to download') <a style="color: #2659d1; font-weight: bold;" href="@lang('/ae-form-en.docx')">@lang('Adverse Event Reporting Form')</a> @lang('for detailed reporting.')</p>
+          <br>
+          <p>@lang('After submitting the form online, you will receive an acknowledgement on your email address. You will be personally contacted only if any additional information is needed. If you require any help in filling the form, you can call our executive for online support')</p>
+          <br>
+          <h3 style="margin-bottom: 8px;">@lang('Confidentiality'):</h3>
+          <p>@lang('All the information and personal data you share with us will be protected and kept confidential. The information you provide may be shared with health authorities.')</p>
+          <p>@lang('Reporting here does not constitute an admission that the company product caused or contributed to the reaction.')</p>
         </div>
       </div>
     </section>

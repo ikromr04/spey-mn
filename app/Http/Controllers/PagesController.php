@@ -15,6 +15,7 @@ use App\Models\Value;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use stdClass;
+use Illuminate\Support\Facades\Mail;
 
 class PagesController extends Controller
 {
@@ -447,5 +448,25 @@ class PagesController extends Controller
     $defaultMap = '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d23682367.238464795!2d21.486589822507256!3d43.56667570684504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2s!4v1635482910688!5m2!1sru!2s" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>';
 
     return view('pages.contacts.index', compact('speySites', 'activeSite', 'page', 'defaultMap'));
+  }
+
+  public function ae(Request $request)
+  {
+    Mail::send('emails.ae-send', [
+      'initials' => $request->inititals,
+      'age' => $request->age,
+      'weight' => $request->weight,
+      'hight' => $request->hight,
+      'event' => $request->event,
+      'suspect' => $request->suspect,
+      'name' => $request->name,
+      'email' => $request->email,
+      'phone' => $request->phone,
+    ], function ($message) {
+      $message->to('drugsafety@evolet.co.uk');
+      $message->subject('Сообщение о жалобе на продукт');
+    });
+
+    return back();
   }
 }
