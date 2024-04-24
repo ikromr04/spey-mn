@@ -122,7 +122,7 @@ class ProductsController extends Controller
     $mnInstructionName = '';
     if ($request->has('mn-instruction')) {
       $mnInstruction = request('mn-instruction');
-      $mnInstructionName = strtolower($request->input('mn-title')) . '-mn.' . $enInstruction->getClientOriginalExtension();
+      $mnInstructionName = strtolower($request->input('mn-title')) . '-mn.' . $mnInstruction->getClientOriginalExtension();
       $mnInstruction->move(public_path('files'), $mnInstructionName);
     }
 
