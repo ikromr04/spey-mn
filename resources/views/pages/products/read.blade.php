@@ -37,7 +37,7 @@
         </li>
       </ul>
     </div>
-    <section class="vitrin">
+    <section class="vitrin" style="background-color: rgba(0, 0, 0, 0.4);">
       <img class="vitrin-img" src="{{ asset('img/products/default-vitrin-bg.jpg') }}">
       <div class="container vitrin-container">
         <div class="vitrin-left">
