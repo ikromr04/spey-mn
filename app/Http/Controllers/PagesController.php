@@ -123,7 +123,7 @@ class PagesController extends Controller
   {
     $locale = App::currentLocale();
     $keyword = $request->keyword;
-    $data = new stdClass;
+    $data = new stdClass();
     // get company histories
     $data->histories = History::select(
       'id',
@@ -182,7 +182,7 @@ class PagesController extends Controller
       }
     }
     // get map
-    $defaultMap = '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d23682367.238464795!2d21.486589822507256!3d43.56667570684504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2s!4v1635482910688!5m2!1sru!2s" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>';
+    $defaultMap = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2674.472417321343!2d106.9312269!3d47.9078959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d9692322098dafb%3A0x58567c17d5a165f0!2sNarnii%20Rd%2014%2C%20HUD%20-%2015%20khoroo%2C%20Ulaanbaatar%2017009%2C%20Mongolia!5e0!3m2!1sen!2s!4v1728897376899!5m2!1sen!2s" width="800" height="800" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
     $data->siteMap = $defaultMap;
     $data->siteID = $request->site;
     if ($data->siteID) {
@@ -190,6 +190,8 @@ class PagesController extends Controller
         'id',
         'map',
       )->find($data->siteID)->map;
+    } else {
+      $data->siteID = 7;
     }
 
     $page = Page::where('route', 'about')->first();
@@ -442,10 +444,17 @@ class PagesController extends Controller
         'email',
       )->find($request->site);
     } else {
-      $activeSite = null;
+      $activeSite = Site::select(
+        'id',
+        $locale . '_title as title',
+        $locale . '_location as location',
+        'map',
+        $locale . '_address as address',
+        'email',
+      )->find(7);
     }
 
-    $defaultMap = '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d23682367.238464795!2d21.486589822507256!3d43.56667570684504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2s!4v1635482910688!5m2!1sru!2s" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>';
+    $defaultMap = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2674.472417321343!2d106.9312269!3d47.9078959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d9692322098dafb%3A0x58567c17d5a165f0!2sNarnii%20Rd%2014%2C%20HUD%20-%2015%20khoroo%2C%20Ulaanbaatar%2017009%2C%20Mongolia!5e0!3m2!1sen!2s!4v1728897376899!5m2!1sen!2s" width="800" height="800" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
 
     return view('pages.contacts.index', compact('speySites', 'activeSite', 'page', 'defaultMap'));
   }

@@ -26,7 +26,7 @@ class PhonesSeeder extends Seeder
       array(
         'id' => '8',
         'site_id' => '7',
-        'numbers' => '+37455965504',
+        'numbers' => '+976 90089969',
         'trashed' => '0',
         'created_at' => NULL,
         'updated_at' => NULL

@@ -53,11 +53,9 @@
       <div class="geography-container">
         <ul class="geography-countries">
           @foreach ($speySites as $site)
-            @if ($site->id != 7)
-              <li class="countries-item">
-                <a class="countries-link {{ $activeSite && $activeSite->id == $site->id ? 'current' : '' }}" href="{{ route('contacts') }}?site={{ $site->id }}#geography-presence">{!! $site->location !!}</a>
-              </li>
-            @endif
+            <li class="countries-item">
+              <a class="countries-link {{ $activeSite && $activeSite->id == $site->id ? 'current' : '' }}" href="{{ route('contacts') }}?site={{ $site->id }}#geography-presence">{!! $site->location !!}</a>
+            </li>
           @endforeach
         </ul>
       </div>
